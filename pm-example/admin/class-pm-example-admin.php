@@ -244,4 +244,30 @@ class Pm_Example_Admin {
 		echo $html;
 	}
 
+	public function register_my_custom_post_type(){
+
+		// to shorten this we only set two labels and let the others default
+		$labels = array(
+			'name' => _x( 'PM Examples', 'Post Type General Name', 'text_domain' ),
+			'singular_name' => _x( 'PM Example', 'Post Type Singular Name', 'text_domain' ),
+		);
+
+		$args = array(
+			'label' => __( 'PM Example', 'text_domain' ),
+			'description' => __( 'Example custom post type', 'text_domain' ),
+			'labels' => $labels,
+			'supports' => array( 'title', 'editor', 'excerpt', 'author', ),
+			'taxonomies' => array( 'category', 'post_tag' ),
+			'hierarchical' => false,
+			'public' => true,
+			'menu_position' => 5,
+			'show_in_admin_bar' => true,
+			'show_in_nav_menus' => true,
+		);
+
+		register_post_type( 'pm_example_cpt', $args );
+
+	}
+
+
 }
